@@ -3,54 +3,16 @@ using namespace std;
 
 class BankAccount
 {
-    public:
     char HoldName[20];
-    long AccNum;
     long balance;
 
-    void AccDetails()
-    {
-        cout<<"Enter the account holder's name: ";
-        cin>>HoldName;
-        cout<<"Enter the account number: ";
-        cin>>AccNum;
-        cout<<"Enter the amount of balance: ";
-        cin>>balance;
-    }
+    public:
+    long AccNum;
 
-    void deposit()
-    {
-        long amount;
-
-            cout<<"Enter the amount to be deposit: ";
-            cin>>amount;
-            balance+=amount;
-            cout<<"Deposit successful."<<endl;
-    }
-
-    void withdraw()
-    {
-        long amount;
-
-            cout<<"Enter the amount to be withdraw: ";
-            cin>>amount;
-
-            if(amount>=balance)
-            {
-                cout<<"Insufficient balance"<<endl;
-            }
-
-            else
-            {
-                balance-=amount;
-                cout<<"Withdraw successful."<<endl;
-            }
-    }
-
-    void display()
-    {
-        cout<<"Current balance: "<<balance<<endl;
-    }
+    void AccDetails();
+    void deposit();
+    void withdraw();
+    void display();
 };
 
 int main()
@@ -95,6 +57,7 @@ int main()
                         else
                         {
                             cout<<"Account no. not found"<<endl;
+                            break;
                         }
                     }
                     break;
@@ -116,6 +79,7 @@ int main()
                         else
                         {
                             cout<<"Account no. not found"<<endl;
+                            break;
                         }
                     }
                     break;
@@ -136,6 +100,7 @@ int main()
                         else
                         {
                             cout<<"Account no. not found"<<endl;
+                            break;
                         }
                     }
                     break;
@@ -153,6 +118,48 @@ int main()
                 }
             }
     }
-
-    return 0;
 }
+
+void BankAccount :: AccDetails()
+    {
+        cout<<"Enter the account holder's name: ";
+        cin>>HoldName;
+        cout<<"Enter the account number: ";
+        cin>>AccNum;
+        cout<<"Enter the amount of balance: ";
+        cin>>balance;
+    }
+
+void BankAccount :: deposit()
+    {
+        long amount;
+
+            cout<<"Enter the amount to be deposit: ";
+            cin>>amount;
+            balance+=amount;
+            cout<<"Deposit successful."<<endl;
+    }
+
+void BankAccount :: withdraw()
+    {
+        long amount;
+
+            cout<<"Enter the amount to be withdraw: ";
+            cin>>amount;
+
+            if(amount>=balance)
+            {
+                cout<<"Insufficient balance"<<endl;
+            }
+
+            else
+            {
+                balance-=amount;
+                cout<<"Withdraw successful."<<endl;
+            }
+    }
+
+    void BankAccount :: display()
+    {
+        cout<<"Current balance: "<<balance<<endl;
+    }
