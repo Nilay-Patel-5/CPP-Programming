@@ -3,15 +3,15 @@ using namespace std;
 
 class product
 {
-    int quantity,price;
+    int id,quantity,price;
     char name[20];
-    int id;
 
     public:
     void AddProd();
+    int GetID();
     void UpdateQuan();
-    void CheckID();
     int CalculateValue();
+    void displayBill();
 };
 
 int main()
@@ -24,7 +24,6 @@ int main()
     cout<<"Enter 1 to add new product"<<endl;
     cout<<"Enter 2 to update quantity of product"<<endl;
     cout<<"Enter 3 to calculate total value of all products"<<endl;
-    cout<<"Enter 0 to exit"<<endl;
 
     while(choice != 0)
     {
@@ -43,33 +42,44 @@ int main()
             case 2:
                 {
                     int ProdFind;
-                    
+
                     cout<<"Enter product ID: ";
-                    cin<<ProdFind;
-                    
-                    for(int i=0;i<Prodfind;i++)
+                    cin>>ProdFind;
+
+                    for(int i=0;i<=ProdCount;i++)
                     {
-                        
+                        if(P[i].GetID()==ProdFind)
+                        {
+                           P[i].UpdateQuan();
+                           break;
+                        }
+
+                        else
+                        {
+                                cout<<"Product not found!"<<endl;
+                                break;
+                        }
                     }
-                    
+                    break;
                 }
 
             case 3:
                 {
                     int TotalValue=0;
 
+                    cout<<"--------------------------------------"<<endl;
+                    cout<<"Name\tQuantity\tPrice\tTotal"<<endl;
+                    cout<<"--------------------------------------"<<endl;
+
                     for(int i=0;i<ProdCount;i++)
                     {
+                        P[i].displayBill();
                         TotalValue+=P[i].CalculateValue();
                     }
 
-                    cout<<"The total value of all products: "<<TotalValue<<endl;
-                    break;
-                }
+                    cout<<"--------------------------------------"<<endl;
 
-            case 0:
-                {
-                    cout<<"Thank you.";
+                    cout<<"Total Bill: "<<TotalValue<<endl;
                     return 0;
                 }
 
@@ -84,13 +94,14 @@ int main()
 
 void product :: AddProd()
 {
-
     cout<<"Enter product ID: ";
     cin>>id;
     cout<<"Enter name of product: ";
     cin>>name;
     cout<<"Enter price of product: ";
     cin>>price;
+
+    quantity=1;
 }
 
 void product :: UpdateQuan()
@@ -100,25 +111,19 @@ void product :: UpdateQuan()
     cout<<"Quantity is updated successfully."<<endl;
 }
 
-void product :: CheckID()
+int product :: GetID()
 {
-    for(int i=0;i<ProdCount;i++)
-    {
-        if(P[i].id==ProdFind)
-        {
-            P[i].UpdateQuan();
-            break;
-        }
-
-        else
-        {
-            cout<<"Product not found!"<<endl;
-            break;
-        }
-    }
+    return id;
 }
 
 int product :: CalculateValue()
 {
     return quantity*price;
+}
+
+void product :: displayBill()
+{
+    cout<<name<<"\t";
+    cout<<quantity<<"\t\t";
+    cout<<price<<"\t"<<CalculateValue()<<endl;
 }
