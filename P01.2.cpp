@@ -11,7 +11,7 @@ class product
 
     void AddProd();
     void UpdateQuan();
-    void CalculateValue();
+    int CalculateValue();
 };
 
 int main()
@@ -58,14 +58,19 @@ int main()
                             break;
                         }
                     }
+                    break;
                 }
 
             case 3:
                 {
+                    int TotalValue=0;
+
                     for(int i=0;i<ProdCount;i++)
                     {
-                        P[i].CalculateValue();
+                        TotalValue+=P[i].CalculateValue();
+
                     }
+                    cout<<"The total value of all products: "<<TotalValue<<endl;
                     break;
                 }
 
@@ -78,6 +83,7 @@ int main()
             default:
                 {
                     cout<<"Invalid input."<<endl;
+                    break;
                 }
         }
     }
@@ -107,9 +113,8 @@ void product :: UpdateQuan()
     cout<<"Quantity is updated successfully."<<endl;
 }
 
-void product :: CalculateValue()
+int product :: CalculateValue()
 {
-    int TotalValue = quantity*price;
 
-    cout<<"The total value of all products: "<<TotalValue<<endl;
+    return quantity*price;
 }
