@@ -5,12 +5,12 @@ class product
 {
     int quantity,price;
     char name[20];
-
-    public:
     int id;
 
+    public:
     void AddProd();
     void UpdateQuan();
+    void CheckID();
     int CalculateValue();
 };
 
@@ -26,7 +26,7 @@ int main()
     cout<<"Enter 3 to calculate total value of all products"<<endl;
     cout<<"Enter 0 to exit"<<endl;
 
-    while(1)
+    while(choice != 0)
     {
         cout<<"Enter the option which you want: ";
         cin>>choice;
@@ -42,23 +42,16 @@ int main()
 
             case 2:
                 {
+                    int ProdFind;
+                    
                     cout<<"Enter product ID: ";
-                    cin>>ProdFind;
-
-                    for(int i=0;i<ProdCount;i++)
+                    cin<<ProdFind;
+                    
+                    for(int i=0;i<Prodfind;i++)
                     {
-                        if(P[i].id==ProdFind)
-                        {
-                            P[i].UpdateQuan();
-                            break;
-                        }
-                        else
-                        {
-                            cout<<"Product not found!"<<endl;
-                            break;
-                        }
+                        
                     }
-                    break;
+                    
                 }
 
             case 3:
@@ -68,8 +61,8 @@ int main()
                     for(int i=0;i<ProdCount;i++)
                     {
                         TotalValue+=P[i].CalculateValue();
-
                     }
+
                     cout<<"The total value of all products: "<<TotalValue<<endl;
                     break;
                 }
@@ -91,30 +84,41 @@ int main()
 
 void product :: AddProd()
 {
+
     cout<<"Enter product ID: ";
     cin>>id;
     cout<<"Enter name of product: ";
     cin>>name;
-    cout<<"Enter quantity of product: ";
-    cin>>quantity;
     cout<<"Enter price of product: ";
     cin>>price;
 }
 
 void product :: UpdateQuan()
 {
-    int NewQuan;
-
     cout<<"Enter no. of quantity to be update: ";
-    cin>>NewQuan;
-
-    quantity=NewQuan;
-
+    cin>>quantity;
     cout<<"Quantity is updated successfully."<<endl;
+}
+
+void product :: CheckID()
+{
+    for(int i=0;i<ProdCount;i++)
+    {
+        if(P[i].id==ProdFind)
+        {
+            P[i].UpdateQuan();
+            break;
+        }
+
+        else
+        {
+            cout<<"Product not found!"<<endl;
+            break;
+        }
+    }
 }
 
 int product :: CalculateValue()
 {
-
     return quantity*price;
 }
