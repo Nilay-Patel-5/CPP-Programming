@@ -76,7 +76,6 @@ int main()//Main function
 
     int choice;//Variable for choice
 
-
     //Printing menu
     cout<<"Enter 1 to deposit."<<endl;
     cout<<"Enter 2 to withdraw."<<endl;
