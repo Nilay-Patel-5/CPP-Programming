@@ -3,7 +3,6 @@ using namespace std;
 
 class Account
 {
-
     char AccHolderName[10];
     long int AccNum,Balance;
 
