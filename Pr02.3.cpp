@@ -91,7 +91,7 @@ next :
         cout<<"Enter the account no.: ";
         cin>>AccFind;
 
-        for(int i=0; i<NumAcc; i++)
+        for(int i=0; i<=NumAcc; i++)
         {
             if(AccFind<=NumAcc)
             {
@@ -113,7 +113,7 @@ next :
         cout<<"Enter the account no.: ";
         cin>>AccFind;
 
-        for(int i=0; i<NumAcc; i++)
+        for(int i=0; i<=NumAcc; i++)
         {
             if(AccFind<=NumAcc)
             {
@@ -135,7 +135,7 @@ next :
         cout<<"Enter the account no.: ";
         cin>>AccFind;
 
-        for(int i=0; i<5; i++)
+        for(int i=0; i<NumAcc; i++)
         {
             if(AccFind<=NumAcc)
             {
