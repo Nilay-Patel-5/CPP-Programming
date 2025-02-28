@@ -1,130 +1,132 @@
-
-#include<iostream>
+//This program is prepared by 24CE089_NILAY PATEL
+#include<iostream>//Standard Input/Output library
 using namespace std;
 
-class product
+class Product//Creating class
 {
-    int id,quantity,price;
-    char name[20];
+    //Private data-members
+    int ProdID,Quantity;
+    float Price;
+    char ProdName[20];
 
+    //Making public functions for different tasks
     public:
-    void AddProd();
-    int GetID();
-    void UpdateQuan();
-    int CalculateValue();
-    void displayBill();
+    void AddProd()//Function for adding new product
+    {
+        cout << "Enter product ID: ";
+        cin >> ProdID;//Taking input of product ID
+        cout << "Enter name of product: ";
+        cin >> ProdName;//Taking input of product's name
+        cout << "Enter price of product: ";
+        cin >> Price;//Taking input of product's price
+
+        Quantity=1;//Initializing product's quantity to 1
+
+        cout << "Product is added successfully!" << endl;//Printing message
+    }
+
+    int GetID()//Function for returning product ID
+    {
+         return ProdID;//Return statement
+    }
+
+    void UpdateQuan()//Function for updating quantity
+    {
+        cout << "Enter no. of quantity to be update: ";
+        cin >> Quantity;//Taking input of product's quantity
+        cout << "Quantity is updated successfully!" << endl;//Printing message
+    }
+
+    int CalculateValue()//Function for returning total price of product
+    {
+         return Quantity*Price;//Return statement
+    }
+
+    void DisplayBill()//Function for displaying bill
+    {
+        cout << ProdName << "\t";
+        cout << Quantity << "\t\t";
+        cout << Price << "\t" << CalculateValue() << endl;
+    }
 };
 
-int main()
+int main()//Main function
 {
-    class product P[50];
-    int choice;
-    int ProdFind;
-    int ProdCount=0;
+    class Product P[100];//Creating object
+    int Choice;//Variable for choice
+    int ProdFind;//Variable for matching product ID
+    int ProdCount=0;//Initializing variable for no. of product to 1
 
-    cout<<"Enter 1 to add new product"<<endl;
-    cout<<"Enter 2 to update quantity of product"<<endl;
-    cout<<"Enter 3 to calculate total value of all products"<<endl;
+    //Printing menu
+    cout << "Enter 1 to add new product." << endl;
+    cout << "Enter 2 to update quantity of product." << endl;
+    cout << "Enter 3 to display bill." << endl;
+    cout << "Enter 0 to exit." << endl;
+    cout << "======================================" << endl;
 
-    while(choice != 0)
-    {
-        cout<<"Enter the option which you want: ";
-        cin>>choice;
+next :
+    cout << "Enter the option which you want: ";
+    cin >> Choice;//Taking input of choice
 
-        switch(choice)
+
+        switch (Choice)//Switch case
         {
-            case 1:
+            case 1://Case for adding new product
                 {
-                    P[ProdCount].AddProd();
-                    ProdCount++;
-                    break;
+                    P[ProdCount].AddProd();//Calling AddProd function
+                    ProdCount++;//Increment of ProductCount
+                    break;//Break statement
                 }
 
-            case 2:
+            case 2://Case for updating product's quantity
                 {
-                    int ProdFind;
+                    int ProdFind;//Variable for matching product ID
 
-                    cout<<"Enter product ID: ";
-                    cin>>ProdFind;
+                    cout << "Enter product ID: ";
+                    cin >> ProdFind;//Taking input of product id to search
 
-                    for(int i=0;i<=ProdCount;i++)
+                    for(int i=0; i < ProdCount; i++)//Loop for matching product id with entered product id
                     {
-                        if(P[i].GetID()==ProdFind)
+                        if(P[i].GetID() == ProdFind)//If product id is matched with entered product id...
                         {
-                           P[i].UpdateQuan();
-                           break;
+                           P[i].UpdateQuan();//Calling UpdateQuan function
+                           break;//Break statement
                         }
 
-                        else
+                        else//If not...
                         {
-                                cout<<"Product not found!"<<endl;
-                                break;
+                                cout << "Product not found!" << endl;//Printing error message
+                                break;//Break statement
                         }
                     }
-                    break;
+                    break;//Break statement
                 }
 
-            case 3:
+            case 3://Case for displaying bill
                 {
-                    int TotalValue=0;
+                    int TotalValue=0;//Initializing TotalValue variable to 0
 
-                    cout<<"--------------------------------------"<<endl;
-                    cout<<"Name\tQuantity\tPrice\tTotal"<<endl;
-                    cout<<"--------------------------------------"<<endl;
+                    cout << "--------------------------------------" << endl;
+                    cout << "Name\tQuantity\tPrice\tTotal" << endl;
+                    cout << "--------------------------------------" << endl;
 
-                    for(int i=0;i<ProdCount;i++)
+                    for(int i=0; i < ProdCount ;i++)//Loop for calling displayBill function
                     {
-                        P[i].displayBill();
-                        TotalValue+=P[i].CalculateValue();
+                        P[i].DisplayBill();//Calling DisplayBill function
+                        TotalValue += P[i].CalculateValue();
                     }
 
-                    cout<<"--------------------------------------"<<endl;
-
-                    cout<<"Total Bill: "<<TotalValue<<endl;
-                    return 0;
+                    cout << "--------------------------------------" << endl;
+                    cout << "Total Bill: " << TotalValue << endl;//Printing total bill
+                    cout << "24CE089_NILAY PATEL." << endl;//Printing exiting message
+                    return 0;//Return statement
                 }
 
-            default:
+            default://Default case
                 {
-                    cout<<"Invalid input."<<endl;
-                    break;
+                    cout << "24CE089_NILAY PATEL" << endl;//Printing exiting message
+                    return 0;//Return statement
                 }
         }
-    }
-}
-
-void product :: AddProd()
-{
-    cout<<"Enter product ID: ";
-    cin>>id;
-    cout<<"Enter name of product: ";
-    cin>>name;
-    cout<<"Enter price of product: ";
-    cin>>price;
-
-    quantity=1;
-}
-
-void product :: UpdateQuan()
-{
-    cout<<"Enter no. of quantity to be update: ";
-    cin>>quantity;
-    cout<<"Quantity is updated successfully."<<endl;
-}
-
-int product :: GetID()
-{
-    return id;
-}
-
-int product :: CalculateValue()
-{
-    return quantity*price;
-}
-
-void product :: displayBill()
-{
-    cout<<name<<"\t";
-    cout<<quantity<<"\t\t";
-    cout<<price<<"\t"<<CalculateValue()<<endl;
+        goto next;//Goto statement
 }
