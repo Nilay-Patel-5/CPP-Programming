@@ -1,3 +1,4 @@
+//This Program is prepared ny 24CE089_NILAY PATEL
 #include<iostream>//Standard Input/Output library
 using namespace std;
 
@@ -83,7 +84,7 @@ next :
     cout << "Enter the option which you want: ";
     cin >> Choice;//Taking input of choice
 
-    switch (Choice)
+    switch (Choice)//Switch case
     {
     case 1://Case for adding account details
     {
@@ -98,7 +99,7 @@ next :
         cout << "Enter the account number: ";
         cin >> AccFind;//Taking input of Account no. to search
 
-        for (int i = 0; i <= NumAcc; i++)//Loop for matching Account no. with entered account no.
+        for (int i = 0; i < NumAcc; i++)//Loop for matching Account no. with entered account no.
         {
             if (Acc[i].GetAccNum() == AccFind)//If entered account matched with account no.
             {
@@ -120,7 +121,7 @@ next :
         cout << "Enter the account number: ";
         cin >> AccFind;//Taking input of Account no. to search
 
-        for (int i = 0; i <= NumAcc; i++)//Loop for matching Account no. with entered account no.
+        for (int i = 0; i < NumAcc; i++)//Loop for matching Account no. with entered account no.
         {
             if (Acc[i].GetAccNum() == AccFind)//If entered account matched with account no.
             {
@@ -142,7 +143,7 @@ next :
         cout << "Enter the account number: ";
         cin >> AccFind;//Taking input of Account no. to search
 
-        for (int i = 0; i <= NumAcc; i++)//Loop for matching Account no. with entered account no.
+        for (int i = 0; i < NumAcc; i++)//Loop for matching Account no. with entered account no.
         {
             if (Acc[i].GetAccNum() == AccFind)//If entered account matched with account no.
             {
