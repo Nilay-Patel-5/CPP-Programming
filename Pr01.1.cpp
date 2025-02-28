@@ -1,4 +1,4 @@
-//This Program is prepared ny 24CE089_NILAY PATEL
+//This Program is prepared by 24CE089_NILAY PATEL
 #include<iostream>//Standard Input/Output library
 using namespace std;
 
