@@ -1,147 +1,158 @@
-#include<iostream>
+//This program is prepared by 24CE089_NILAY PATEL
+#include<iostream>//Standard Input/Output library
 using namespace std;
 
-class Plot
+class Plot//Creating class
 {
-    int length,width,area,perimeter;
+    //Private data-members
+    int Length,Width,Area,Perimeter;
 
 public:
-    void AddPlotData()
-    {
-        cout<<"Enter the length of plot: ";
-        cin>>length;
-        cout<<"Enter the length of plot: ";
-        cin>>width;
 
-        area = length*width;
-        perimeter = 2*(length+width);
+    //Making public functions for different tasks
+    void AddPlotData()//Function for entering plot's details
+    {
+        cout << "Enter length of plot: ";
+        cin >> Length;//Taking input of length of plot
+        cout  << "Enter width of plot: ";
+        cin >> Width;//Taking input of width of plot
+        cout << "Plot's data is successfully added!" << endl;//Printing message
+
+        Area = Length*Width;//Calculating area of plot
+        Perimeter = 2*(Length+Width);//Calculating perimeter of plot
     }
 
-    void UpdatePlotData()
+    void UpdatePlotData()//Function for updating plot's data
     {
-        cout<<"Enter the new length of plot: ";
-        cin>>length;
-        cout<<"Enter the new length of plot: ";
-        cin>>width;
+        cout << "Enter new length of plot: ";
+        cin >> Length;//Taking input of new length of plot
+        cout << "Enter new width of plot: ";
+        cin >> Width;//Taking input of new width of plot
+        cout << "Plot's data is successfully updated!" << endl;//Printing message
 
-        area = length*width;
-        perimeter = 2*(length+width);
+        Area = Length*Width;//Again calculating area for updated data of plot
+        Perimeter = 2*(Length+Width);//Again calculating perimeter for updated data of plot
     }
 
-    void DisplayAllPlotData()
+    void DisplayAllPlotData()//Function for displaying all plot's data
     {
-        cout<<"Length: "<<length<<endl;
-        cout<<"Width: "<<width<<endl;
-        cout<<"Area: "<<area<<endl;
-        cout<<"Perimeter: "<<perimeter<<endl;
+        cout << "Length: " << Length << endl;//Displaying length of plot
+        cout << "Width: "<< Width<< endl;//Displaying width of plot
+        cout << "Area: "<< Area << endl;//Displaying area of plot
+        cout << "Perimeter: " << Perimeter << endl;//Displaying perimeter of plot
     }
 
-    void DisplayAnyPlotData()
+    void DisplayAnyPlotData()//Function for displaying any one plot's data
     {
-        cout<<"Plot details:"<<endl;
-        cout<<"Length: "<<length<<endl;
-        cout<<"Width: "<<width<<endl;
-        cout<<"Area: "<<area<<endl;
-        cout<<"Perimeter: "<<perimeter<<endl;
+        cout << "Plot details:" << endl;
+        cout << "Length: "<< Length << endl;//Displaying length of plot
+        cout << "Width: "<< Width << endl;//Displaying width of plot
+        cout << "Area: "<< Area << endl;//Displaying area of plot
+        cout << "Perimeter: " << Perimeter << endl;//Displaying perimeter of plot
     }
 };
 
-int main()
+int main()//Main function
 {
-    class Plot P[25];
-    int choice,NumPlot=0,PlotNum;
+    class Plot P[100];//Creating object
+    int Choice,PlotFind;//Variables for Choice & variable for matching plot no.
+    int NumPlot = 0;//Variable for tracking the no. of plot & initializing to 0
 
-    cout<<"Enter 1 to add plot data."<<endl;
-    cout<<"Enter 2 to update plot data."<<endl;
-    cout<<"Enter 3 to display plot data."<<endl;
-    cout<<"Else to exit."<<endl;
+    //Displaying menu
+    cout << "Enter 1 to add plot data." << endl;
+    cout << "Enter 2 to update plot data." << endl;
+    cout << "Enter 3 to display plot data." << endl;
+    cout << "Else to exit." << endl;
+    cout << "=============================" << endl;
 
-next : cout<<"Enter your choice: ";
-       cin>>choice;
+next :
+    cout << "Enter your choice: ";
+    cin >> Choice;//Taking input of choice
 
-    switch(choice)
+    switch (Choice)//Switch case
     {
-    case 1:
+    case 1://Case for adding plot's data
     {
-        P[NumPlot].AddPlotData();
-        NumPlot++;
-        break;
+        P[NumPlot].AddPlotData();//Calling AddPlotData
+        NumPlot++;//Increment in variable no. of plot
+        break;//Break statement
     }
 
-    case 2:
+    case 2://Case for updating plot's data
     {
-        cout<<"Enter plot no.: ";
-        cin>>PlotNum;
+        cout << "Enter plot no.: ";
+        cin >> PlotFind;//Taking input of plot no. to search
 
-        if(PlotNum<=NumPlot)
+        if(PlotFind <= NumPlot)//If no. of plot is greater than or equal to entered plot no. ...
         {
-            P[PlotNum-1].UpdatePlotData();
-            break;
+            P[PlotFind-1].UpdatePlotData();//Calling UpdatePlotData function
+            break;//Break statement
         }
 
-        else
+        else//If not...
         {
-            cout<<"No plot found!"<<endl;
-            break;
+            cout << "No plot found!" << endl;//Printing error message
+            break;//Break statement
         }
     }
 
-    case 3:
+    case 3://Case for displaying plot's data
     {
-        int choice1;
+        int Choice1;//Variable for another choice
 
-        cout<<"Enter 1 to display all plot data & enter 2 to display any one plot data which you want: ";
-        cin>>choice1;
+        cout << "Enter 1 to display all plot data & enter 2 to display any one plot data which you want: ";
+        cin >> Choice1;//Taking input for another choice
 
-        switch(choice1)
+        switch (Choice1)//Switch case
         {
-        case 1:
+        case 1://Case for displaying entered all plot's data
         {
-            for(int i=1,PlotNum=0; PlotNum<NumPlot; i++,PlotNum++)
+            for(int i = 1, PlotNum = 0; PlotNum < NumPlot; i++, PlotNum++)//Loop for displaying entered all plot's data
             {
-                cout<<"Plot "<<i<<" details:"<<endl;
-                P[PlotNum].DisplayAllPlotData();
+                cout << "Plot " << i << " details:" << endl;
+                P[PlotNum].DisplayAllPlotData();//Calling DisplayAllPlotData function
             }
 
-            if(NumPlot==0)
+            if(NumPlot == 0)//If no. of plot is equal to 0...
             {
-                cout<<"No plot available to display!"<<endl;
-                break;
+                cout << "No plot available to display!" << endl;//Printing error message
+                break;//Break statement
             }
-            break;
+            break;//Break statement
         }
 
-        case 2:
+        case 2://Case for displaying any one plot's data
         {
-            cout<<"Enter plot number: ";
-            cin>>PlotNum;
+            cout << "Enter plot number: ";
+            cin >> PlotFind;//Taking input of plot no.
 
-            if(PlotNum<=NumPlot)
+            if(PlotFind <= NumPlot)//If no. of plot is greater than or equal to entered plot no. ...
             {
-                P[PlotNum-1].DisplayAnyPlotData();
-                break;
+                P[PlotFind-1].DisplayAnyPlotData();//Calling DisplayAnyPlotData function
+                break;//Break statement
             }
 
-            else
+            else//If not...
             {
-                cout<<"No plot found!"<<endl;
-                break;
+                cout << "No plot found!" << endl;//Printing error message
+                break;//Break statement
             }
         }
 
-        default:
+        default://Default case
         {
-            cout<<"Invalid input"<<endl;
+            cout << "Invalid input!" << endl;//Printing error message
+            break;//Break statement
         }
         }
-        break;
+        break;//Break statement
     }
 
-    default:
+    default://Default case
     {
-        cout<<"Thank you."<<endl;
-        return 0;
+        cout << "24CE089_NILAY PATEL." << endl;//Printing exiting message
+        return 0;//Return statement
     }
     }
-    goto next;
+    goto next;//Goto statement
 }
