@@ -5,7 +5,7 @@ using namespace std;
 class BankAccount//Creating class
 {
     //Private data-members
-    char HolderName[20];
+    char AccHolderName[10];
     long Balance;
     long AccNum;
 
@@ -14,7 +14,7 @@ public:
     void AddAccDetails()//Function for entering details of bank account
     {
         cout << "Enter the account holder's name: ";
-        cin >> HolderName;//Taking input of account holder's name
+        cin >> AccHolderName;//Taking input of account holder's name
         cout << "Enter the account number: ";
         cin >> AccNum;//Taking input of account number
 
@@ -147,7 +147,7 @@ next :
         {
             if (Acc[i].GetAccNum() == AccFind)//If entered account matched with account no.
             {
-                Acc[i].DisplayAccBalance();//Calling WithdrawMoney function
+                Acc[i].DisplayAccBalance();//Calling DisplayAccBalance function
                 break;//Break statement
             }
 
