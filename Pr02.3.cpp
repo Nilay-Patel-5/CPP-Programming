@@ -18,7 +18,7 @@ public:
         cout << "Enter the account number: ";
         cin >> AccNum;//Taking input of account number
 
-        Balance = 1000;
+        Balance = 1000;//Balance data-member is initialized by 1000
 
         cout << "Account addition successful!" << endl;//Printing message
     }
