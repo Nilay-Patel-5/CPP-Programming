@@ -12,7 +12,7 @@ public:
 
     Person()
     {
-        strcpy(Name,"N/A");
+        strcpy(Name,"");
         Age = 0;
     }
 
@@ -66,7 +66,7 @@ public:
 
     Manager() : Employee()
     {
-        strcpy(Department,"N/A");
+        strcpy(Department,"");
     }
 
     void AddManagerData()
