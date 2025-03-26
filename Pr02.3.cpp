@@ -18,7 +18,7 @@ public:
         cout << "Enter the account number: ";
         cin >> AccNum;//Taking input of account number
 
-        Balance = 1000;//Balance data-member is initialized by 1000
+        Balance = 1000;
 
         cout << "Account addition successful!" << endl;//Printing message
     }
@@ -103,7 +103,7 @@ next :
 
         for (int i = 0; i < NumAcc; i++)//Loop for matching Account no. with entered account no.
         {
-            if (Acc[i].GetAccNum() == AccFind)//If entered account matched with account no.
+            if (Acc[i].GetAccNum() == AccFind)//If entered account no. matched with account no.
             {
                 Acc[i].DepositMoney();//Calling DepositMoney function
                 break;//Break statement
@@ -125,7 +125,7 @@ next :
 
         for (int i = 0; i < NumAcc; i++)//Loop for matching Account no. with entered account no.
         {
-            if (Acc[i].GetAccNum() == AccFind)//If entered account matched with account no.
+            if (Acc[i].GetAccNum() == AccFind)//If entered account no. matched with account no.
             {
                 Acc[i].WithdrawMoney();//Calling WithdrawMoney function
                 break;//Break statement
@@ -147,7 +147,7 @@ next :
 
         for (int i = 0; i < NumAcc; i++)//Loop for matching Account no. with entered account no.
         {
-            if (Acc[i].GetAccNum() == AccFind)//If entered account matched with account no.
+            if (Acc[i].GetAccNum() == AccFind)//If entered account no. matched with account no.
             {
                 Acc[i].DisplayAccDetails();//Calling DisplayAccDetails function
                 break;//Break statement
