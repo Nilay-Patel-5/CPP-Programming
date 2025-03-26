@@ -1,78 +1,85 @@
-#include<iostream>
+//This Program is prepared by 24CE089_NILAY PATEL
+#include<iostream>//Standard Input/Output library
 using namespace std;
 
-class Inventory
+class Inventory//Creating class
 {
+    //Private data-members
     int ItemID;
     char ItemName[20];
     float Price;
     int Quantity;
 
+    //Making public functions for different tasks
 public:
 
-    void AddItemDetails()
+    void AddItemDetails()//Function for adding item's details
     {
         cout << "Enter item ID: ";
-        cin >> ItemID;
+        cin >> ItemID;//Taking input of item ID
         cout << "Enter item's name: ";
-        cin >> ItemName;
+        cin >> ItemName;//Taking input of item's name
         cout << "Enter price of item: ";
-        cin >> Price;
+        cin >> Price;//Taking input of price
 
-        Quantity = 1;
+        Quantity = 1;//Initializing quantity to 1
     }
 
-    int GetItemID()
+    int GetItemID()//Function for returning item ID
     {
-        return ItemID;
+        return ItemID;//Returning item ID
     }
 
-    void IncreaseItemQuan()
+    void IncreaseItemQuan()//Function for increasing item's quantity
     {
-        int NewQuantity;
+        //Variable declaration
+        int NewQuantity;//Variable for increasing quantity
+
         cout << "Enter quantity to be increased: ";
-        cin >> NewQuantity;
+        cin >> NewQuantity;//Taking input of increasing quantity
 
-        Quantity+=NewQuantity;
+        Quantity += NewQuantity;//Addition of present quantity & increasing quantity
 
-        cout << "Item's Quantity is successfully increased!" << endl;
+        cout << "Item's Quantity is successfully increased!" << endl;//Printing message
     }
 
-    void DecreaseItemQuan()
+    void DecreaseItemQuan()//Function for decreasing item's quantity
     {
-        int NewQuantity;
+        //Variable declaration
+        int NewQuantity;//Variable for decreasing quantity
         cout << "Enter quantity to be decreased: ";
-        cin >> NewQuantity;
+        cin >> NewQuantity;//Taking input of decreasing quantity
 
-        if(Quantity >= NewQuantity)
+        if(Quantity >= NewQuantity)//If present quantity is greater than decreasing quantity...
         {
-            Quantity-=NewQuantity;
+            Quantity -= NewQuantity;//Subtraction of present quantity & decreasing quantity
 
-            cout << "Item's Quantity is successfully decreased!" << endl;
+            cout << "Item's Quantity is successfully decreased!" << endl;//Printing message
         }
 
-        else
+        else//If not...
         {
-            cout << "Insufficient quantity!" << endl;
+            cout << "Insufficient quantity for decreament!" << endl;//Printing error message
         }
     }
 
-    void DisplayItemDetails()
+    void DisplayItemDetails()//Function for displaying item's details
     {
         cout << "Item's details:" << endl;
-        cout << "ID: " << ItemID << endl;
-        cout << "Name: " << ItemName << endl;
-        cout << "Price: " << Price << endl;
-        cout << "Quantity: " << Quantity << endl;
+        cout << "ID: " << ItemID << endl;//Displaying item ID
+        cout << "Name: " << ItemName << endl;//Displaying item's name
+        cout << "Price: " << Price << endl;//Displaying price
+        cout << "Quantity: " << Quantity << endl;//Displaying present quantity
     }
 };
 
-int main()
+int main()//Main function
 {
-    class Inventory I[100];
-    int NumItem = 0;
-    int ItemFind,Choice;
+    class Inventory I[100];//Creating object
+    int NumItem = 0;//Variable for tracking no. of items & initializing to 0
+    int ItemFind,Choice;//Variables for matching item ID & choice
 
+    //Displaying menu
     cout << "Enter 1 to add item." << endl;
     cout << "Enter 2 to increase quantity." << endl;
     cout << "Enter 3 to decrease quantity." << endl;
@@ -80,91 +87,91 @@ int main()
     cout << "Else to Exit." << endl;
     cout << "==================================" << endl;
 
-next :
+next ://Label
     cout << "Enter the option which you want: ";
-    cin >> Choice;
+    cin >> Choice;//Taking input of choice
 
-    switch(Choice)
+    switch(Choice)//Switch case
     {
-    case 1:
+    case 1://Case for adding items
     {
-        I[NumItem].AddItemDetails();
-        NumItem++;
+        I[NumItem].AddItemDetails();//Calling AddItemDetails function
+        NumItem++;//Increment in no. of items
 
-        break;
+        break;//Break statement
     }
 
-    case 2:
+    case 2://Case for increasing quantity
     {
         cout << "Enter item ID: ";
-        cin >> ItemFind;
+        cin >> ItemFind;//Taking input of item ID to search
 
-        for (int i = 0; i <= NumItem; i++)
+        for (int i = 0; i <= NumItem; i++)//Loop for matching item ID with entered item ID
         {
-            if (I[i].GetItemID() == ItemFind)
+            if (I[i].GetItemID() == ItemFind)//If entered item ID matched with item ID...
             {
-                I[i].IncreaseItemQuan();
-                break;
+                I[i].IncreaseItemQuan();//Calling IncreaseItemQuan function
+                break;//Break statement
             }
 
-            else
+            else//If not...
             {
-                cout << "Item not found!" << endl;
-                break;
+                cout << "Item not found!" << endl;//Printing error message
+                break;//Break statement
             }
         }
-        break;
+        break;//Break statement
     }
 
     case 3:
     {
         cout << "Enter item ID: ";
-        cin >> ItemFind;
+        cin >> ItemFind;//Taking input of item ID to search
 
-        for (int i = 0; i <= NumItem; i++)
+        for (int i = 0; i <= NumItem; i++)//Loop for matching item ID with entered item ID
         {
-            if (I[i].GetItemID() == ItemFind)
+            if (I[i].GetItemID() == ItemFind)//If entered item ID matched with item ID...
             {
-                I[i].DecreaseItemQuan();
-                break;
+                I[i].DecreaseItemQuan();//Calling DecreaseItemQuan
+                break;//Break statement
             }
 
-            else
+            else//If not...
             {
-                cout << "Item not found!" << endl;
-                break;
+                cout << "Item not found!" << endl;//Printing error message
+                break;//Break statement
             }
         }
-        break;
+        break;//Break statement
     }
 
     case 4:
     {
         cout << "Enter item ID: ";
-        cin >> ItemFind;
+        cin >> ItemFind;//Taking input of item ID to search
 
-        for (int i = 0; i <= NumItem; i++)
+        for (int i = 0; i <= NumItem; i++)//Loop for matching item ID with entered item ID
         {
-            if (I[i].GetItemID() == ItemFind)
+            if (I[i].GetItemID() == ItemFind)//If entered item ID matched with item ID...
             {
-                I[i].DisplayItemDetails();
-                break;
+                I[i].DisplayItemDetails();//Calling DisplayItemDetails
+                break;//Break statement
             }
 
-            else
+            else//If not...
             {
-                cout << "Item not found!" << endl;
-                break;
+                cout << "Item not found!" << endl;//Printing error message
+                break;//Break statement
             }
         }
-        break;
+        break;//Break statement
     }
 
-    default:
+    default://Default case
     {
-        cout << "24CE089_NILAY PATEL." << endl;
-        return 0;
+        cout << "24CE089_NILAY PATEL." << endl;//Printing exiting message
+        return 0;//Return statement
     }
     }
-    goto next;
+    goto next;//Goto statement
 }
