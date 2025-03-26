@@ -8,11 +8,11 @@ using namespace std;
 class Student//Creating class
 {
     //Private data-members
-    int RollNum,Marks1,Marks2,Marks3;
+    int RollNum;
     char Name[10];
-    float Average;
+    float Marks1,Marks2,Marks3,Average;
 
-    //Private members-function
+    //Private member-function
     inline void CalculateAverage()//Function for calculating average marks of 3 subs.
     {
         Average=(Marks1+Marks2+Marks3)/3.0;//Calculating average of 3 subs.
@@ -44,15 +44,15 @@ public:
     void AddStuDetails()//Function for adding student's details
     {
         cout << "Enter roll number: ";
-        cin >> RollNum;//Taking input for roll no.
+        cin >> RollNum;//Taking input of roll no.
         cout << "Enter name: ";
-        cin >> Name;//Taking input for name
+        cin >> Name;//Taking input of name
         cout << "Enter marks of subject 1: ";
-        cin >> Marks1;//Taking input for marks of sub.1
+        cin >> Marks1;//Taking input of marks of sub.1
         cout << "Enter marks of subject 2: ";
-        cin >> Marks2;//Taking input for marks of sub.2
+        cin >> Marks2;//Taking input of marks of sub.2
         cout << "Enter marks of subject 3: ";
-        cin >> Marks3;//Taking input for marks of sub.3
+        cin >> Marks3;//Taking input of marks of sub.3
 
         CalculateAverage();//Calling CalculateAverage function
 
@@ -79,6 +79,7 @@ public:
 int main()//Main function
 {
     class Student S[100];//Creating object
+
     int NumStu = 0;//Variable for tracking the no. of students & initializing to 0
     int Choice,StuFind;//Variable for Choice & variable for matching roll no.
 
@@ -88,7 +89,7 @@ int main()//Main function
     cout << "Else to exit." << endl;
     cout << "=====================================" << endl;
 
-next :
+next ://Label
     cout << "Enter your choice which you want: ";
     cin >> Choice;//Taking input of choice
 
@@ -97,7 +98,9 @@ next :
     case 1://Case for adding student's details
     {
         S[NumStu].AddStuDetails();//Calling AddStuDetails function
+
         NumStu++;//Increment in variable no. of student
+
         break;//Break statement
     }
 
@@ -113,23 +116,27 @@ next :
             if(S[i].GetRollNo() == StuFind)//If roll no. matched with entered roll no. ...
             {
                 S[i].DisplayStuDetails();//Calling DisplayStuDetails function
+
                 Found = true;//If roll no. matched with entered roll no. then Found variable switches to true
+
                 break;//Break statement
             }
         }
-            if(! Found)//If Found variable doesn't switch to true...
-            {
-                S[StuFind].DisplayStuDetails();//Calling DisplayStuDetails function
-            }
+
+        if(! Found)//If Found variable doesn't switch to true...
+        {
+            S[StuFind].DisplayStuDetails();//Calling DisplayStuDetails function
+        }
+
         break;//Break statement
     }
 
     default://Default case
     {
         cout << "24CE089_NILAY PATEL." << endl;//Printing existing message
+
         return 0;//Return statement
     }
     }
     goto next;//Goto statement
 }
-
