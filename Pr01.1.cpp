@@ -11,6 +11,7 @@ class BankAccount//Creating class
 
     //Making public functions for different tasks
 public:
+
     void AddAccDetails()//Function for entering details of bank account
     {
         cout << "Enter the account holder's name: ";
@@ -23,7 +24,7 @@ public:
         cout << "Account addition successful!" << endl;//Printing message
     }
 
-    int GetAccNum()//Function for returning the value of account number
+    inline int GetAccNum()//Function for returning the value of account number
     {
         return AccNum;//Return statement
     }
@@ -35,7 +36,9 @@ public:
 
         cout << "Enter the amount to be deposited: ";
         cin >> Amount;//Taking input of amount to be deposited
+
         Balance += Amount;//The amount to be deposit in account
+
         cout << "Deposit successful!" << endl;//Printing message
     }
 
@@ -47,7 +50,7 @@ public:
         cout << "Enter the amount to be withdrawn: ";
         cin >> Amount;//Taking input of amount to be withdrawn
 
-        if(Amount >= Balance-1000)//If wanted amount of withdrawal is greater than balance....
+        if(Amount > Balance-1000)//If wanted amount of withdrawal is greater than balance....
         {
             cout << "Insufficient balance!" << endl;//Printing error message
         }
@@ -55,19 +58,21 @@ public:
         else//If not....
         {
             Balance -= Amount;//The amount to be withdraw from account
+
             cout << "Withdrawal successful!" << endl;//Printing message
         }
     }
 
     void DisplayAccBalance()//Function for displaying balance
     {
-        cout<<"Current balance: "<<Balance<<endl;//Printing current balance
+        cout<< "Current balance: " << Balance << endl;//Printing current balance
     }
 };
 
 int main()//Main function
 {
     class BankAccount Acc[100];//Creating object
+
     long AccFind;//Variable for matching account number
     int Choice;//Variable for choice
     int NumAcc = 0;//Variable for tracking the no. of account & initializing to 0
@@ -80,92 +85,104 @@ int main()//Main function
     cout << "Else to Exit." << endl;
     cout << "===================================" << endl;
 
-next :
-    cout << "Enter the option which you want: ";
-    cin >> Choice;//Taking input of choice
-
-    switch (Choice)//Switch case
+    while(true)//Loop for doing various tasks
     {
-    case 1://Case for adding account details
-    {
-        Acc[NumAcc].AddAccDetails();//Calling AddAccDetails function
-        NumAcc++;//Increment in NumAcc Variable
+        cout << "Enter the option which you want: ";
+        cin >> Choice;//Taking input of choice
 
-        break;//Break statement
-    }
+        bool Found = false;//Variable for signal if account no. matched
 
-    case 2://Case for depositing money
-    {
-        cout << "Enter the account number: ";
-        cin >> AccFind;//Taking input of Account no. to search
-
-        for (int i = 0; i < NumAcc; i++)//Loop for matching Account no. with entered account no.
+        switch (Choice)//Switch case
         {
-            if (Acc[i].GetAccNum() == AccFind)//If entered account matched with account no.
+        case 1://Case for adding account details
+        {
+            Acc[NumAcc].AddAccDetails();//Calling AddAccDetails function
+            NumAcc++;//Increment in NumAcc Variable
+
+            break;//Break statement
+        }
+
+        case 2://Case for depositing money
+        {
+            cout << "Enter the account number: ";
+            cin >> AccFind;//Taking input of Account no. to search
+
+            for (int i = 0; i < NumAcc; i++)//Loop for matching account no. with entered account no.
             {
-                Acc[i].DepositMoney();//Calling DepositMoney function
-                break;//Break statement
+                if (Acc[i].GetAccNum() == AccFind)//If entered account matched with account no.
+                {
+                    Acc[i].DepositMoney();//Calling DepositMoney function
+
+                    Found = true;//Account no. matched with entered account no.
+
+                    break;//Break statement
+                }
             }
 
-            else//If not...
+            if(! Found)//If not...
+                {
+                    cout << "Account not found!" << endl;//Printing error message
+                }
+
+            break;//Break statement
+        }
+
+        case 3://Case for withdrawing money
+        {
+            cout << "Enter the account number: ";
+            cin >> AccFind;//Taking input of Account no. to search
+
+            for (int i = 0; i < NumAcc; i++)//Loop for matching Account no. with entered account no.
+            {
+                if (Acc[i].GetAccNum() == AccFind)//If entered account matched with account no.
+                {
+                    Acc[i].WithdrawMoney();//Calling WithdrawMoney function
+
+                    Found = true;//Account no. matched with entered account no.
+
+                    break;//Break statement
+                }
+            }
+
+            if(! Found)//If not...
+                {
+                    cout << "Account not found!" << endl;//Printing error message
+                }
+
+            break;//Break statement
+        }
+
+        case 4://Case for displaying current balance
+        {
+            cout << "Enter the account number: ";
+            cin >> AccFind;//Taking input of Account no. to search
+
+            for (int i = 0; i < NumAcc; i++)//Loop for matching Account no. with entered account no.
+            {
+                if (Acc[i].GetAccNum() == AccFind)//If entered account matched with account no.
+                {
+                    Acc[i].DisplayAccBalance();//Calling DisplayAccBalance function
+
+                    Found = true;//Account no. matched with entered account no.
+
+                    break;//Break statement
+                }
+            }
+
+            if(! Found)//If not...
             {
                 cout << "Account not found!" << endl;//Printing error message
-                break;//Break statement
             }
+
+            break;//Break statement
         }
-        break;//Break statement
-    }
 
-    case 3://Case for withdrawing money
-    {
-        cout << "Enter the account number: ";
-        cin >> AccFind;//Taking input of Account no. to search
-
-        for (int i = 0; i < NumAcc; i++)//Loop for matching Account no. with entered account no.
+        default://Default Case
         {
-            if (Acc[i].GetAccNum() == AccFind)//If entered account matched with account no.
-            {
-                Acc[i].WithdrawMoney();//Calling WithdrawMoney function
-                break;//Break statement
-            }
+            cout << "24CE089_NILAY PATEL." << endl;//Printing exiting message
 
-            else//If not...
-            {
-                cout << "Account not found!" << endl;//Printing error message
-                break;//Break statement
-            }
+            return 0;//Return statement
         }
-        break;//Break statement
-    }
-
-    case 4://Case for displaying current balance
-    {
-        cout << "Enter the account number: ";
-        cin >> AccFind;//Taking input of Account no. to search
-
-        for (int i = 0; i < NumAcc; i++)//Loop for matching Account no. with entered account no.
-        {
-            if (Acc[i].GetAccNum() == AccFind)//If entered account matched with account no.
-            {
-                Acc[i].DisplayAccBalance();//Calling DisplayAccBalance function
-                break;//Break statement
-            }
-
-            else//If not...
-            {
-                cout << "Account not found!" << endl;//Printing error message
-                break;//Break statement
-            }
         }
-        break;//Break statement
     }
-
-    default://Default Case
-    {
-        cout << "24CE089_NILAY PATEL." << endl;//Printing exiting message
-        return 0;//Return statement
-    }
-
-    }
-    goto next;//Goto statement
 }
