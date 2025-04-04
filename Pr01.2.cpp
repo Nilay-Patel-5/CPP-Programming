@@ -78,7 +78,7 @@ int main()//Main function
     cout << "Enter 3 to display bill & exit." << endl;
     cout << "======================================" << endl;
 
-    while(true)
+    while(true)//Loop for doing various tasks
     {
         cout << "Enter the option which you want: ";
         cin >> Choice;//Taking input of choice
