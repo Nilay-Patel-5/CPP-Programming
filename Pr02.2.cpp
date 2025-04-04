@@ -144,7 +144,7 @@ next ://Label
 
     default://Default case
     {
-        cout << "24CE089_NILAY PATEL." << endl;//Printing existing message
+        cout << "24CE089_NILAY PATEL." << endl;//Printing exiting message
 
         return 0;//Return statement
     }
