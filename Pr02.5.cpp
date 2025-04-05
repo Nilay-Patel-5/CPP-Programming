@@ -110,7 +110,7 @@ int main()//Main function
                 {
                     L[i].DisplayAccData();//Calling DisplayAccData function
 
-                    Found = true;//Account no. matched with entered loan ID no.
+                    Found = true;//Account no. matched with entered loan ID
 
                     break;//Break statement
                 }
