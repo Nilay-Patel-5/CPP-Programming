@@ -12,7 +12,7 @@ customer-friendly format. This functionality was intended to aid both customers 
 
 //This Program is prepared by 24CE089_NILAY PATEL
 #include<iostream>//Standard Input/Output library
-#include<math.h>//Standard math file
+#include<math.h>//Standard math library
 
 using namespace std;
 
