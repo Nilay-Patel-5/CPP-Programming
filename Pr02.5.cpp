@@ -1,116 +1,135 @@
-#include<iostream>
-#include<math.h>
+/*A regional banking institution sought to improve its loan management process by developing a system that could efficiently handle loan details for
+applicants. The system was expected to streamline the calculation of monthly EMIs (Equated Monthly Installments) and provide detailed loan summaries for
+customers. This initiative aimed to enhance customer experience by offering accurate and transparent information about their loans.
+To meet these requirements, the bank's technology team was tasked with designing a solution. They envisioned a system where each loan would be uniquely
+identified by a loan ID, and additional details such as the applicant's name, total loan amount, annual interest rate, and loan tenure in months would be
+stored. The team also emphasized the importance of accurately calculating the EMI using a standard formula based on the loan amount, interest rate, and
+tenure. The formula incorporated compound interest principles to determine the fixed monthly payment for the loan term.
+                                                                        EMI= (𝑃 ∗ 𝑅 ∗ (1 + 𝑅)^𝑇)/(((1+𝑅)^𝑇) −1)
+As part of the implementation, the developers planned to initialize loans either with default values for testing purposes or with actual customer data
+provided at the time of application. The system needed to include a feature to display comprehensive loan details, including the calculated EMI, in a
+customer-friendly format. This functionality was intended to aid both customers and bank staff in managing loan-related queries effectively.*/
+
+//This Program is prepared by 24CE089_NILAY PATEL
+#include<iostream>//Standard Input/Output library
+#include<math.h>//Standard math file
+
 using namespace std;
 
-class LoanAcc
+class LoanAcc//Creating class
 {
+    //Private data-members
     int LoanID;
     long LoanAmount;
     char AppName[20];
     float InterestRate,LoanTenure;
     float EMI;
 
-    void CalculateEMI()
+    inline void CalculateEMI()//Function calculating EMI
     {
-        InterestRate=InterestRate/12/100;
-        EMI =  (LoanAmount*InterestRate*pow((1+InterestRate),LoanTenure))/(pow((1+InterestRate),LoanTenure)-1);
+        InterestRate = InterestRate/12/100;//Calculating Interest rate
+        EMI =  (LoanAmount*InterestRate*pow((1+InterestRate),LoanTenure))/(pow((1+InterestRate),LoanTenure)-1);//Calculating EMI
     }
 
+//Making public functions for different tasks
 public:
-    void AddAccData()
+
+    void AddAccData()//Function for adding account data
     {
         cout << "Enter loan ID: ";
-        cin >> LoanID;
-        cout<<"Enter applicant's name: ";
-        cin>>AppName;
-        cout<<"Enter total loan amount: ";
-        cin>>LoanAmount;
-        cout<<"Enter annual interest rate: ";
-        cin>>InterestRate;
-        cout<<"Enter loan tenure in months : ";
-        cin>>LoanTenure;
+        cin >> LoanID;//Taking input of loan ID
+        cout << "Enter applicant's name: ";
+        cin >>  AppName;//Taking input of applicant's name
+        cout << "Enter total loan amount: ";
+        cin >> LoanAmount;//Taking input of loan amount
+        cout << "Enter annual interest rate: ";
+        cin >> InterestRate;//Taking input of interest rate
+        cout << "Enter loan tenure in months : ";
+        cin >> LoanTenure;//Taking input of loan period in months
 
-        CalculateEMI();
+        CalculateEMI();//Calling CalculateEMI function internally
     }
 
-    void DisplayAccData()
+    void DisplayAccData()//Function for displaying account data
     {
-        InterestRate=InterestRate*12*100;
+        InterestRate = InterestRate*12*100;//Calculating interest rate
 
-        cout<<"Loan ID: "<<LoanID<<endl;
-        cout<<"Applicant's name: "<<AppName<<endl;
-        cout<<"Total loan amount: "<<LoanAmount<<endl;
-        cout<<"Annual interest rate: "<<InterestRate<<"%"<<endl;
-        cout<<"Loan tenure in months : "<<LoanTenure<<endl;
-        cout<<"Total EMI of loan amount: "<<EMI<<endl;
+        cout << "Account's details:" << endl;
+        cout << "Applicant's name: " << AppName << endl;//Displaying applicant's name
+        cout << "Total loan amount: " << LoanAmount << endl;//Displaying loan amount
+        cout << "Annual interest rate: " << InterestRate << "%" << endl;//Displaying interest rate
+        cout << "Loan tenure in months : " << LoanTenure << endl;//Displaying loan period in months
+        cout << "Total EMI of loan amount: " << EMI << endl;//Displaying Total EMI
     }
 
-    int GetAccNum()
+    inline int GetAccNum()//Function for returning account no.
     {
-        return LoanID;
+        return LoanID;//Returning loan ID
     }
 };
 
-int main()
+int main()//Main function
 {
-    class LoanAcc L[100];
-    int NumAcc=0;
-    int AccFind,Choice;
+    class LoanAcc L[100];//Creating object
 
+    int NumAcc = 0;//Variable for tracking no.of account will be created & initializing to 0
+    int AccFind,Choice;//Variables for matching account no. & choice
+
+    //Displaying menu
     cout << "Enter 1 to add loan account." << endl;
     cout << "Enter 2 to display account data." << endl;
     cout << "Else to Exit." << endl;
+    cout << "================================"<<endl;
 
-    while(Choice != 0)
+    while(true)//Loop for doing various tasks
     {
-        cout << "================================"<<endl;
         cout << "Enter the option which you want: ";
-        cin >> Choice;
+        cin >> Choice;//Taking input of choice
 
-
-        switch(Choice)
+        switch(Choice)//Switch case
         {
-            case 1:
+        case 1://Case for adding account data
+        {
+            L[NumAcc].AddAccData();//Calling AddAccData function
+
+            NumAcc++;//Increment in no. of accounts
+
+            break;//Break statement
+        }
+
+        case 2://Case for displaying account data
+        {
+            cout << "Enter Loan ID: ";
+            cin >> AccFind;//Taking input of account no. to search
+
+            bool Found = false;//Variable for signal if account no. matched
+
+            for (int i = 0; i < NumAcc; i++)//Loop for matching item ID with entered loan ID
+            {
+                if (L[i].GetAccNum() == AccFind)//If entered loan ID matched with loan ID...
                 {
-                    if (NumAcc < 100)
-                    {
-                        L[NumAcc].AddAccData();
-                        NumAcc++;
-                    }
+                    L[i].DisplayAccData();//Calling DisplayAccData function
 
-                    else
-                    {
-                        cout << "Account limit reached." << endl;
-                    }
-                    break;
-                }
+                    Found = true;//Account no. matched with entered loan ID no.
 
-            case 2:
-                {
-                    cout << "Enter Loan ID: ";
-                    cin >> AccFind;
-
-                    for (int i = 0; i < NumAcc; i++)
-                    {
-                        if (L[i].GetAccNum() == AccFind)
-                        {
-                            L[i].DisplayAccData();
-                            break;
-                        }
-
-                        else if (i == NumAcc-1)
-                        {
-                            cout << "Account not found." << endl;
-                        }
-                    }
-                    break;
-                }
-
-            default:
-                {
-                    cout << "24CE089_NILAY PATEL";
-                    return 0;
+                    break;//Break statement
                 }
             }
+
+            if(! Found)//If Found variable doesn't switch to true...
+            {
+                cout << "Account not found!" << endl;//Printing error message
+            }
+
+            break;//Break statement
+        }
+
+        default://Default case
+        {
+            cout << "24CE089_NILAY PATEL";//Printing exiting message
+
+            return 0;//Return statement
+        }
+        }
     }
 }
