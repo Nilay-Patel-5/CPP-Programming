@@ -1,3 +1,13 @@
+/*A technology firm aimed to develop a flexible and reusable solution for managing collections of various data types, including integers, floating-point
+numbers, and characters. The system was intended to perform fundamental operations on these collections, such as finding the maximum value, reversing the
+collection, and displaying all elements. To achieve versatility and avoid redundancy in code, the solution was designed to use function templates, allowing
+the same logic to be applied seamlessly to different data types.
+The team recognized the importance of using dynamic arrays to store the collections, enabling efficient management of varying collection sizes. The design
+emphasized scalability and flexibility, ensuring that the system could handle different data types and their associated operations with minimal changes to
+the core logic.
+In practice, the system allowed for the creation of collections for various data types, such as integers, floating-point numbers, and characters. The
+operations on these collections included determining the maximum value, reversing the order of elements, and printing the collection contents.*/
+
 //This program is prepared by 24CE089_NILAY PATEL
 #include<iostream>//Standard Input/Output library
 using namespace std;
@@ -5,9 +15,9 @@ using namespace std;
 template<typename T>//Template declaration
 void InputData(T* Data,int Size)//Function for entering data elements
 {
-    cout << "Enter " << Size << " elements: ";
     for (int i = 0; i < Size; ++i)//Loop for taking data elements
     {
+        cout << "Enter element " << i+1 << ": ";
         cin >> Data[i];//Taking input of data elements
     }
 }
@@ -42,8 +52,9 @@ T FindMax(int Size,T* Data)//Function for finding max value from set of data ele
 template<typename T>//Template declaration
 void ReverseData(int Size,T* Data)//Function for reversing data elements
 {
-    for(int Start = 0,End = Size-1; Start < End ; ++Start, --End)//Loop for replacing data elements with eachother
+    for(int Start = 0,End = Size-1; Start < End ; ++Start, --End)//Loop for replacing data elements with each-other
     {
+        //Replacing data elements with each-other
         T Temp = Data[Start];
         Data[Start] = Data[End];
         Data[End] = Temp;
@@ -87,10 +98,10 @@ int main()//Main function
     cout << "Enter the no. of elements: ";
     cin >> Size;//Taking input of no. of data elements
 
-    char DataType;//Character variable for datatype
+    char DataType;//Character variable for data-type
     cout << "Enter the data type (i = int, f = float, c = char): ";
-Next :
-    cin >> DataType;//Taking input for datatype
+Next ://Label
+    cin >> DataType;//Taking input for data-type
 
     if (DataType == 'i')//If entered character in i...
     {
@@ -113,119 +124,4 @@ Next :
     cout << "24CE089_NILAY PATEL." << endl;//Exiting message
 
     return 0;//Return statement
-}
-#include<iostream>
-using namespace std;
-
-template<typename T>
-void InputData(T* Data,int Size)
-{
-    cout << "Enter " << Size << " elements: ";
-    for (int i = 0; i < Size; ++i)
-    {
-        cin >> Data[i];
-    }
-}
-
-template<typename T>
-T GetElements(int Size,T* Data)
-{
-    int Count;
-
-    if(Count >= 0 && Count < Size)
-    {
-        return Data[Count];
-    }
-}
-
-template<typename T>
-T FindMax(int Size,T* Data)
-{
-    T MaxValue = Data[0];
-
-    for(int i = 1; i < Size; ++i)
-    {
-        if(Data[i] > MaxValue)
-        {
-            MaxValue = Data[i];
-        }
-    }
-
-    return MaxValue;
-}
-
-template<typename T>
-void ReverseData(int Size,T* Data)
-{
-    for(int Start = 0,End = Size-1; Start < End ; ++Start, --End)
-    {
-        T Temp = Data[Start];
-        Data[Start] = Data[End];
-        Data[End] = Temp;
-    }
-}
-
-template<typename T>
-void DisplayData(int Size,T* Data)
-{
-    for (int i = 0; i < Size; ++i)
-    {
-        cout << Data[i] << " ";
-    }
-    cout << endl;
-}
-
-template<typename T>
-void PerformOperations(int Size)
-{
-    T* Data;
-    Data = new T[Size];
-
-    InputData(Data,Size);
-
-    cout << "Entered data: ";
-    DisplayData(Size,Data);
-
-    T MaxValue = FindMax(Size,Data);
-    cout << "Max Value: " << MaxValue << endl;
-
-    cout << "Reversed Data: ";
-    ReverseData(Size,Data);
-    DisplayData(Size,Data);
-
-    delete[] Data;
-}
-
-int main()
-{
-    int Size;
-    cout << "Enter the no. of elements: ";
-    cin >> Size;
-
-    char DataType;
-    cout << "Enter the data type (i = int, f = float, c = char): ";
-Next :
-    cin >> DataType;
-
-    if (DataType == 'i')
-    {
-        PerformOperations<int>(Size);
-    }
-    else if (DataType == 'f')
-    {
-        PerformOperations<float>(Size);
-    }
-    else if (DataType == 'c')
-    {
-        PerformOperations<char>(Size);
-    }
-    else
-    {
-        cout << "Invalid data type! re-enter data type: ";
-        goto Next;
-    }
-
-    cout << "24CE089_NILAY PATEL" << endl;
-
-    return 0;
 }
