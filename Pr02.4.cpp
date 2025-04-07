@@ -1,3 +1,15 @@
+/*A mid-sized retail store faced challenges in efficiently managing its inventory of items. The store's management sought to build a system that could
+keep track of individual items, including details like a unique item ID, item name, price, and the quantity available in stock. The need for a streamlined
+process arose due to frequent stock discrepancies, which led to issues with customer satisfaction and operational efficiency.
+To address this, the store hired a team of developers to create a digital inventory management system. The envisioned solution would allow for the
+initialization of item details, either with default values or specific attributes like ID, name, price, and starting quantity. This system needed to
+handle operations like increasing stock levels when new shipments arrived and decreasing stock when items were sold, ensuring sufficient inventory was
+available for each transaction. Additionally, the system would provide clear, detailed summaries of each item's status, aiding in decision-making and
+reporting.
+The developers faced real-world scenarios where they had to manage multiple inventory items simultaneously. They planned to design an array of inventory
+items and simulate common tasks such as adding stock, processing sales transactions, and displaying the current inventory details. Handling edge cases,
+such as attempting to sell more items than available in stock, became a critical part of the implementation to ensure reliability.*/
+
 //This Program is prepared by 24CE089_NILAY PATEL
 #include<iostream>//Standard Input/Output library
 using namespace std;
@@ -10,7 +22,7 @@ class Inventory//Creating class
     float Price;
     int Quantity;
 
-    //Making public functions for different tasks
+//Making public functions for different tasks
 public:
 
     void AddItemDetails()//Function for adding item's details
@@ -76,6 +88,7 @@ public:
 int main()//Main function
 {
     class Inventory I[100];//Creating object
+
     int NumItem = 0;//Variable for tracking no. of items & initializing to 0
     int ItemFind,Choice;//Variables for matching item ID & choice
 
@@ -87,91 +100,104 @@ int main()//Main function
     cout << "Else to Exit." << endl;
     cout << "==================================" << endl;
 
-next ://Label
-    cout << "Enter the option which you want: ";
-    cin >> Choice;//Taking input of choice
-
-    switch(Choice)//Switch case
+    while(true)//Loop for doing various tasks
     {
-    case 1://Case for adding items
-    {
-        I[NumItem].AddItemDetails();//Calling AddItemDetails function
-        NumItem++;//Increment in no. of items
+        cout << "Enter the option which you want: ";
+        cin >> Choice;//Taking input of choice
 
-        break;//Break statement
-    }
+        bool Found = false;//Variable for signal if account no. matched
 
-    case 2://Case for increasing quantity
-    {
-        cout << "Enter item ID: ";
-        cin >> ItemFind;//Taking input of item ID to search
-
-        for (int i = 0; i <= NumItem; i++)//Loop for matching item ID with entered item ID
+        switch(Choice)//Switch case
         {
-            if (I[i].GetItemID() == ItemFind)//If entered item ID matched with item ID...
+        case 1://Case for adding items
+        {
+            I[NumItem].AddItemDetails();//Calling AddItemDetails function
+
+            NumItem++;//Increment in no. of items
+
+            break;//Break statement
+        }
+
+        case 2://Case for increasing quantity
+        {
+            cout << "Enter item ID: ";
+            cin >> ItemFind;//Taking input of item ID to search
+
+            for (int i = 0; i < NumItem; i++)//Loop for matching item ID with entered item ID
             {
-                I[i].IncreaseItemQuan();//Calling IncreaseItemQuan function
-                break;//Break statement
+                if (I[i].GetItemID() == ItemFind)//If entered item ID matched with item ID...
+                {
+                    I[i].IncreaseItemQuan();//Calling IncreaseItemQuan function
+
+                    Found = true;//Account no. matched with entered account no.
+
+                    break;//Break statement
+                }
             }
 
-            else//If not...
+            if(! Found)//If Found variable doesn't switch to true...
             {
                 cout << "Item not found!" << endl;//Printing error message
-                break;//Break statement
             }
+
+            break;//Break statement
         }
-        break;//Break statement
-    }
 
-    case 3:
-    {
-        cout << "Enter item ID: ";
-        cin >> ItemFind;//Taking input of item ID to search
-
-        for (int i = 0; i <= NumItem; i++)//Loop for matching item ID with entered item ID
+        case 3:
         {
-            if (I[i].GetItemID() == ItemFind)//If entered item ID matched with item ID...
+            cout << "Enter item ID: ";
+            cin >> ItemFind;//Taking input of item ID to search
+
+            for (int i = 0; i < NumItem; i++)//Loop for matching item ID with entered item ID
             {
-                I[i].DecreaseItemQuan();//Calling DecreaseItemQuan
-                break;//Break statement
+                if (I[i].GetItemID() == ItemFind)//If entered item ID matched with item ID...
+                {
+                    I[i].DecreaseItemQuan();//Calling DecreaseItemQuan
+
+                    Found = true;//Account no. matched with entered account no.
+
+                    break;//Break statement
+                }
             }
 
-            else//If not...
+            if(! Found)//If Found variable doesn't switch to true...
             {
                 cout << "Item not found!" << endl;//Printing error message
-                break;//Break statement
             }
+
+            break;//Break statement
         }
-        break;//Break statement
-    }
 
-    case 4:
-    {
-        cout << "Enter item ID: ";
-        cin >> ItemFind;//Taking input of item ID to search
-
-        for (int i = 0; i <= NumItem; i++)//Loop for matching item ID with entered item ID
+        case 4:
         {
-            if (I[i].GetItemID() == ItemFind)//If entered item ID matched with item ID...
+            cout << "Enter item ID: ";
+            cin >> ItemFind;//Taking input of item ID to search
+
+            for (int i = 0; i < NumItem; i++)//Loop for matching item ID with entered item ID
             {
-                I[i].DisplayItemDetails();//Calling DisplayItemDetails
-                break;//Break statement
+                if (I[i].GetItemID() == ItemFind)//If entered item ID matched with item ID...
+                {
+                    I[i].DisplayItemDetails();//Calling DisplayItemDetails
+
+                    Found = true;//Account no. matched with entered account no.
+
+                    break;//Break statement
+                }
             }
 
-            else//If not...
+            if(! Found)//If Found variable doesn't switch to true...
             {
                 cout << "Item not found!" << endl;//Printing error message
-                break;//Break statement
             }
-        }
-        break;//Break statement
-    }
 
-    default://Default case
-    {
-        cout << "24CE089_NILAY PATEL." << endl;//Printing exiting message
-        return 0;//Return statement
+            break;//Break statement
+        }
+
+        default://Default case
+        {
+            cout << "24CE089_NILAY PATEL." << endl;//Printing exiting message
+            return 0;//Return statement
+        }
+        }
     }
-    }
-    goto next;//Goto statement
 }
