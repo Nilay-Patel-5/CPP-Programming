@@ -18,6 +18,7 @@ currency(), which prepends a specified currency symbol (₹, $, etc.) before dis
 presented.*/
 
 // This program is prepared by 24CE089_NILAY PATEL.
+// This program is prepared by 24CE089_NILAY PATEL.
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -42,7 +43,7 @@ private:
 public:
     void Input() {
         cout << "Enter student name: ";
-        getline(cin >> ws, Name);
+        getline(cin >> ws, Name);  // ws consumes any leading whitespace
 
         cout << "Enter marks for subject 1: ";
         cin >> Marks1;
@@ -68,11 +69,11 @@ public:
     bool ReadFromFile(ifstream& InFile) {
         if (!getline(InFile, Name)) return false;
         InFile >> Marks1 >> Marks2 >> Marks3 >> TuitionFee;
-        InFile.ignore();
+        InFile.ignore(); // consume the newline
+
         Grade1 = GetGrade(Marks1);
         Grade2 = GetGrade(Marks2);
         Grade3 = GetGrade(Marks3);
-
         return true;
     }
 
@@ -85,17 +86,14 @@ public:
     }
 
     static void PrintHeader(ofstream& OutFile) {
-        string title = "=== Student Performance Report ===";
-        int width = 65;
-        int padding = (width - title.length()) / 2;
-
-        OutFile << "\n" << string(padding, ' ') << title << "\n\n";
+        OutFile << "\n\n"
+                << setw(50) << right << "=== Student Performance Report ===\n\n";
         OutFile << left << setw(20) << "Name"
                 << setw(10) << "Grade1"
                 << setw(10) << "Grade2"
                 << setw(10) << "Grade3"
                 << setw(15) << "Tuition Fee" << endl;
-        OutFile << string(width, '-') << endl;
+        OutFile << string(65, '-') << endl;
     }
 };
 
@@ -112,7 +110,7 @@ int main() {
         S.Input();
         S.WriteToFile(DataOut);
 
-        cout << "Do you want to enter another student? (y/n): ";
+        cout << "\nDo you want to enter another student? (y/n): ";
         cin >> More;
         cin.ignore();
     } while (tolower(More) == 'y');
