@@ -19,7 +19,6 @@ working with different methods to store and manage the collection of shapes.*/
 #define _USE_MATH_DEFINES // <-- This line must come first
 #include <cmath>          // For M_PI and other math functions
 #include <iostream>       // For input/output
-using namespace std;
 
 using namespace std;
 
